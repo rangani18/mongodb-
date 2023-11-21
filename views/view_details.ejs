@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">add details</a>
+    <table border="1">
+        <tr>
+            <td>name</td>
+            <td>age</td>
+            <td>gender</td>
+            <td>hobby</td>
+            <td>city</td>
+            <td>message</td>
+            <td>image</td>
+            <td>Action</td>
+        </tr>
+        <% for(var ob of stdata) { %>
+        <tr>
+            <td><%= ob.name %></td>
+            <td><%= ob.age %></td>
+            <td><%= ob.gender %></td>
+            <td><%= ob.hobby %></td>
+            <td><%= ob.city %></td>
+            <td><%= ob.message %></td>
+            <td><img src="<%= ob.adminImage %>" height="100"></td>
+            <td>
+                
+                <a href="/deleteRecord/<%=ob.id%>">Delete</a>
+                <a href="/updateRecord/<%=ob.id%>">update</a>
+            </td>
+        </tr>
+        <% } %>
+     </table>
+</body>
+</html>

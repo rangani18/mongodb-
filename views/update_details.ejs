@@ -1,0 +1,55 @@
+<form method="post" action="/updatestudent" enctype="multipart/form-data">
+    <input type="text" name="EditId" value="<%= oldstdata.id %>">
+    <table>
+        <tr>
+            <td>Enter student name :</td>
+            <td><input type="text" name="name" value="<%= oldstdata.name %>"></td>
+        </tr>
+        <tr>
+            <td>Enter student age :</td>
+            <td><input type="text" name="age" value="<%= oldstdata.age %>"></td>
+        </tr>
+        <tr>
+            <td>gender</td>
+            <td>
+                <input type="radio" name="gender" value="male" <% if(oldstdata.gender == 'male'){ %> <%= 'checked' %> <% } %>>male
+                <input type="radio" name="gender" value="female" <% if(oldstdata.gender == 'female') { %> <%= 'checked' %> <% } %>>female
+            </td>
+        </tr>
+        <tr>
+            <td>select hobby</td>
+            <td>
+                <input type="checkbox" name="hobby" value="reading" <% if(oldstdata.hobby.includes('reading')){ %><%= 'checked' %><% } %>>reading
+                <input type="checkbox" name="hobby" value="music" <% if(oldstdata.hobby.includes('music')){ %> <%= 'checked' %><% } %>>music
+                <input type="checkbox" name="hobby" value="cycling" <% if(oldstdata.hobby.includes('cycling')){ %> <%='checked'%><% } %>>cycling
+            </td>
+        </tr>
+        <tr>
+            <% var citydata = ["surat","vadodra","ahemdabad","navsari","rajkot"] %>
+            <td>Select city</td>
+            <td>
+                <select name="city">
+                    <option value="">--select city--</option>
+                    <% citydata.map((v)=>{ %>
+                        <option value="<%= v %>"<% if(oldstdata.city==v){%><%= 'selected' %><% } %>><%= v %></option>
+                    <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>upload image</td>
+            <td>
+                <input type="file" name="adminImage">
+                <img src="<%= oldstdata.adminImage %>" height="100">
+            </td>
+        </tr>
+        <tr>
+            <td>enter your message</td>
+            <td><textarea name="message"><%= oldstdata.message %></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="Edit data"></td>
+        </tr>
+    </table>
+</form>
